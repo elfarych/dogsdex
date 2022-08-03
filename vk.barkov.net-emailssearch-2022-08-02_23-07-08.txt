@@ -1,0 +1,22 @@
+﻿--------------------------
+-- Поиск емейлов во ВКонтакте
+--------------------------
+-- Найдено: 420 емейлов
+-- В ОТЧЁТЕ ПОКАЗАНЫ ТОЛЬКО ПЕРВЫЕ 10 СТРОК, ПОТОМУ ЧТО ВЫ ПОЛЬЗУЕТЕСЬ БЕСПЛАТНОЙ ВЕРСИЕЙ СЕРВИСА VK.BARKOV.NET
+-- Оплатив полный доступ всего за 299 руб/день или 799 руб/мес, вы получите отчёт с данными всех 420 найденных людей,
+-- а также получите неограниченный доступ ко всем функциям сервиса и приоритетную техподдержку:
+-- https://vk.barkov.net/prices.aspx
+--------------------------
+-- Условия расчёта:
+-- Почтовые домены: @mail.ru crypto, @bk.ru crypto, @list.ru crypto, @inbox.ru crypto, @yandex.ru crypto, @ya.ru crypto, @rambler.ru crypto, @gmail.com crypto
+--------------------------
+olesya.sot@mail.ru
+Magmir_2000@mail.ru
+edgarbg@mail.ru
+borisov-drum@mail.ru
+ilya-filichev@mail.ru
+worldgr999@mail.ru
+support@spasibo.xyz
+support@marafon0nline.ru.com
+info@marafon0nline.ru.com
+support@cryptosilva.com
