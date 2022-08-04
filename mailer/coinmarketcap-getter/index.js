@@ -1,7 +1,7 @@
 const axios = require('axios')
 
 
-const handle = 'CyberConnect'
+const handle = 'BNBChain'
 const type = 1
 
 const sended = ['CyberConnect']
@@ -37,7 +37,7 @@ function userHandler (users = []) {
         // sendMail(email + '@gmail.com')
     })
     try {
-        axios.post('http://192.168.0.109:8000/create/', {
+        axios.post('http://192.168.0.109:8000/create_list/', {
             mails
         })
     } catch (e) {
