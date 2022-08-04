@@ -10,15 +10,15 @@ let transporter = nodemailer.createTransport({
     port: 465,
     secure: true,
     auth: {
-        user: 'dex4dogs@owlgame.space',
-        pass: '4e%CBY*7',
+        user: 'crypto@dogsdex.space',
+        pass: '*u%l0%Ad',
     },
 })
 
 function sendMail(to) {
     try {
         transporter.sendMail({
-            from: '"DogsDEX" <dex4dogs@owlgame.space>',
+            from: '"DogsDEX" <crypto@dogsdex.space>',
             to,
             subject: 'Crypto airdrop from DogsDEX | $200',
             html
@@ -32,10 +32,12 @@ function sendMail(to) {
 
 async function loadEmails() {
     try {
-        await axios.get('http://192.168.0.109:8000/list/').then(res => {
-            const data = res.data.results.slice(13700, 13900)
+        await axios.get('http://192.168.0.109:8000/valid_list/').then(res => {
+            console.log(res.data.results.length)
+            const data = res.data.results.slice(1800, 1958)
             const emails = data.map(item => item.email)
-            console.log(emails)
+            emails.push('elfarych@gmail.com')
+            console.log(emails.length)
             emailsHandler(emails)
         })
     } catch (e) {

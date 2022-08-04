@@ -21,3 +21,13 @@ class CreateEmailsView(APIView):
 class EmailsListView(generics.ListAPIView):
     serializer_class = serializers.AddressListSerializer
     queryset = models.Address.objects.all()
+
+
+class ValidEmailsListView(generics.ListAPIView):
+    serializer_class = serializers.ValidAddressListSerializer
+    queryset = models.ValidAddress.objects.all()
+
+
+class CreateValidEmailView(generics.CreateAPIView):
+    serializer_class = serializers.ValidAddressDetailSerializer
+    queryset = models.ValidAddress.objects.all()

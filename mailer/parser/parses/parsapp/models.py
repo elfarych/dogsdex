@@ -11,3 +11,14 @@ class Address(models.Model):
 
     class Meta:
         ordering = ('-date',)
+
+
+class ValidAddress(models.Model):
+    email = models.EmailField(unique=True)
+    sent = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.email
+
+    class Meta:
+        ordering = ('email',)

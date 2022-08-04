@@ -1,8 +1,8 @@
 const validator = require('deep-email-validator')
 const axios = require("axios");
 
-let counter = 7000
-let validCounter = 415
+let counter = 31100
+let validCounter = 1519
 let emails
 let emailsLen
 
@@ -46,7 +46,7 @@ async function emailsHandler(startSlice) {
             if (counter === endSlice - 10) {
                 setTimeout(() => {
                     emailsHandler(endSlice)
-                }, 15000)
+                }, 25000)
             }
         })
     })
