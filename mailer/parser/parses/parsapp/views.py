@@ -25,6 +25,11 @@ class EmailsListView(generics.ListAPIView):
 
 class ValidEmailsListView(generics.ListAPIView):
     serializer_class = serializers.ValidAddressListSerializer
+    queryset = models.ValidAddress.objects.filter(sent=False)
+
+
+class UpdateValidAddressView(generics.UpdateAPIView):
+    serializer_class = serializers.ValidAddressDetailSerializer
     queryset = models.ValidAddress.objects.all()
 
 

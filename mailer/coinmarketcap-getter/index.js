@@ -7,7 +7,7 @@ const type = 1
 const sended = ['CyberConnect']
 
 
-async function getUsers (lastScore = undefined) {
+async function getUsers (lastScore = '1653006317306') {
     try {
         await axios.post('https://api-gravity.coinmarketcap.com/gravity/v3/gravity/follow/query', {
             handle,

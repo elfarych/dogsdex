@@ -18,7 +18,7 @@ loadWallets()
 
 setInterval(() => {
     loadWallets()
-}, 1000 * 60 * 1)
+}, 1000 * 60 * 3)
 
 
 setInterval(() => {

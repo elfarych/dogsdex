@@ -29,7 +29,7 @@ function checkBalance (addresses) {
 
 function balanceHandler (coin, address, balance) {
     const balanceValue = balance / 10 ** 18
-    if (balanceValue >= 1) {
+    if (balanceValue >= 10) {
         sender.sendMessage(coin, balanceValue.toFixed(2), address)
     }
 }

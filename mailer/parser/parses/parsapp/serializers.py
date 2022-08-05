@@ -13,7 +13,7 @@ class ValidAddressListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.ValidAddress
-        fields = ('email',)
+        fields = ('email', 'id')
 
 
 class ValidAddressDetailSerializer(serializers.ModelSerializer):

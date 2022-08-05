@@ -1,8 +1,8 @@
 const validator = require('deep-email-validator')
 const axios = require("axios");
 
-let counter = 31100
-let validCounter = 1519
+let counter = 450
+let validCounter = 246
 let emails
 let emailsLen
 
@@ -12,6 +12,7 @@ async function loadEmails() {
             const data = res.data.results
             emails = data.map(item => item.email)
             emailsLen = emails.length
+            console.log(emailsLen)
             emailsHandler(counter)
         })
     } catch (e) {
@@ -20,10 +21,9 @@ async function loadEmails() {
 }
 
 
-
 async function emailsHandler(startSlice) {
 
-    const endSlice = startSlice + 100 <= emailsLen ? startSlice + 100 : emailsLen
+    const endSlice = startSlice + 50 <= emailsLen ? startSlice + 50 : emailsLen
     const slicedEmail = emails.slice(startSlice, endSlice)
 
     slicedEmail.forEach(email => {
@@ -42,14 +42,12 @@ async function emailsHandler(startSlice) {
                     console.log(e.message)
                 }
             }
-
-            if (counter === endSlice - 10) {
-                setTimeout(() => {
-                    emailsHandler(endSlice)
-                }, 25000)
-            }
         })
     })
+
+    setTimeout(() => {
+        emailsHandler(endSlice)
+    }, 2500)
 }
 
 

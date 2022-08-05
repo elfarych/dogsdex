@@ -126,7 +126,7 @@ REST_FRAMEWORK = {
     'DATE_FORMAT': "%d.%m.%Y",
     'TIME_FORMAT': "%H:%M",
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    'PAGE_SIZE': 50000,
+    'PAGE_SIZE': 250000,
 }
 
 
