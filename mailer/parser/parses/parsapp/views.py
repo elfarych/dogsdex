@@ -31,3 +31,20 @@ class ValidEmailsListView(generics.ListAPIView):
 class CreateValidEmailView(generics.CreateAPIView):
     serializer_class = serializers.ValidAddressDetailSerializer
     queryset = models.ValidAddress.objects.all()
+
+
+def set_all_checked(request):
+    emails = models.Address.objects.all()
+    for i in emails:
+        i.sent = True
+        i.save()
+
+    return HttpResponse('ok')
+
+
+def delete_all_addresses_checked(request):
+    emails = models.Address.objects.all()
+    for i in emails:
+        i.delete()
+
+    return HttpResponse('ok')

@@ -1,6 +1,6 @@
 const axios = require('axios')
 
-
+let counter = 0
 const handle = 'BNBChain'
 const type = 1
 
@@ -32,13 +32,13 @@ async function getUsers (lastScore = undefined) {
 
 
 function userHandler (users = []) {
-    const mails = users.map(user => {
-        return user.nickname?.toLowerCase().replaceAll(' ', '') + '@gmail.com'
-        // sendMail(email + '@gmail.com')
-    })
+    const mails = users.map(user => user.nickname?.toLowerCase().replaceAll(' ', '') + '@gmail.com')
     try {
         axios.post('http://192.168.0.109:8000/create_list/', {
             mails
+        }).then(res => {
+            counter += mails.length
+            console.log(counter)
         })
     } catch (e) {
         console.log(e)
