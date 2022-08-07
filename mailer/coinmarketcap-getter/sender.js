@@ -6,21 +6,22 @@ const axios = require('axios')
 let testEmailAccount = nodemailer.createTestAccount()
 
 let transporter = nodemailer.createTransport({
-    host: 'connect.smtp.bz',
-    port: 465,
+    host: 'smtp.msndr.net',
+    port: 587 ,
     secure: true,
     auth: {
         user: 'devspace88@gmail.com',
-        pass: 'NRm9uag5wAYe',
+        pass: '4c5f4731729eec70ca1b66973eba175d',
     },
 })
 
 function sendMail(toObject) {
     try {
         transporter.sendMail({
-            from: '"Dogs DAO" <promo@dexdogs.site>',
+            from: '"Dogs DAO" <airdrop@bitman.trade>',
             to: toObject.email,
             subject: 'DogsDEX free airdrop | 3500 DOGS token',
+            text: 'Congratulations! You have access to DOGS airdrop',
             html
         }).then(res => {
             if (toObject.id) {
@@ -59,4 +60,4 @@ function emailsHandler (emails) {
 
 
 // loadEmails()
-sendMail({ email : 'elfarych@gmail.com' })
+sendMail({ email : 'gsxznuzk@spamtest.smtp.bz' })
