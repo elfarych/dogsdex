@@ -6,21 +6,21 @@ const axios = require('axios')
 let testEmailAccount = nodemailer.createTestAccount()
 
 let transporter = nodemailer.createTransport({
-    host: 'smtp.beget.com',
+    host: 'connect.smtp.bz',
     port: 465,
     secure: true,
     auth: {
-        user: 'promo@dogsdex.site',
-        pass: '93&tDmwy',
+        user: 'devspace88@gmail.com',
+        pass: 'NRm9uag5wAYe',
     },
 })
 
 function sendMail(toObject) {
     try {
         transporter.sendMail({
-            from: '"Dogs DEX" <promo@dogsdex.site>',
+            from: '"Dogs DAO" <promo@dexdogs.site>',
             to: toObject.email,
-            subject: 'DogsDEX native token airdrop | $200',
+            subject: 'DogsDEX free airdrop | 3500 DOGS token',
             html
         }).then(res => {
             if (toObject.id) {
@@ -42,7 +42,7 @@ async function loadEmails() {
     try {
         await axios.get('http://192.168.0.109:8000/valid_list/').then(res => {
             console.log(res.data.results.length)
-            const data = res.data.results.slice(800, 1000)
+            const data = res.data.results.slice(0, 200)
             data.push({email: 'devspace88@gmail.com'})
             emailsHandler(data)
         })
@@ -58,5 +58,5 @@ function emailsHandler (emails) {
 }
 
 
-loadEmails()
-// sendMail('devspace88@gmail.com')
+// loadEmails()
+sendMail({ email : 'elfarych@gmail.com' })

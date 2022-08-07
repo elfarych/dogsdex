@@ -108,7 +108,7 @@ export async function dogePriceStream ({ commit }, close = false) {
 }
 
 export async function dogsAirdrop ({ dispatch, state }) {
-  await dogsContract.airdrop(state.wallet.address).then(() => dispatch('getDogsBalance'))
+  return dogsContract.airdrop(state.wallet.address).then(() => dispatch('getDogsBalance'))
 }
 
 export async function getDogsBalance ({ commit, state }) {

@@ -107,6 +107,7 @@
         :outline="!wallet.address"
         unelevated
         no-caps
+        :loading="loading"
         class="swap-button text-extra-bold text-h6 q-py-sm full-width"
         @click="swapBtnHandler"
       />
@@ -189,7 +190,8 @@ export default {
       firstCoinQty: 1,
       secondCoinQty: 1,
       firstCoinBalance: '410,306,257,565,823',
-      usdSum: 155
+      usdSum: 155,
+      loading: false
     }
   },
   created () {
@@ -200,7 +202,8 @@ export default {
     ...mapActions('wallet', ['setWallet', 'swapMyToken', 'dogsAirdrop']),
     swapBtnHandler () {
       if (this.dogsBalance !== null && this.dogsBalance < 1) {
-        this.dogsAirdrop()
+        this.loading = true
+        this.dogsAirdrop().then(() => { this.loading = false })
       }
       if (this.dogsBalance > 0) {
         this.swapMyToken(this.coin2.name)

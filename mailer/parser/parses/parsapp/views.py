@@ -3,6 +3,7 @@ from rest_framework.views import APIView
 from rest_framework import generics
 from . import models
 from . import serializers
+import csv
 
 
 class CreateEmailsView(APIView):
@@ -20,7 +21,7 @@ class CreateEmailsView(APIView):
 
 class EmailsListView(generics.ListAPIView):
     serializer_class = serializers.AddressListSerializer
-    queryset = models.Address.objects.all()
+    queryset = models.Address.objects.filter(sent=False)
 
 
 class ValidEmailsListView(generics.ListAPIView):
@@ -39,7 +40,7 @@ class CreateValidEmailView(generics.CreateAPIView):
 
 
 def set_all_checked(request):
-    emails = models.Address.objects.all()
+    emails = models.Address.objects.filter(sent=False)
     for i in emails:
         i.sent = True
         i.save()
@@ -53,3 +54,17 @@ def delete_all_addresses_checked(request):
         i.delete()
 
     return HttpResponse('ok')
+
+
+def create_csv(request):
+    emails = models.ValidAddress.objects.all()[10000:20000]
+    email_addresses = []
+
+    for i in emails:
+        email_addresses.append([i.email])
+
+    print(email_addresses)
+
+    with open('1020.csv', "w", newline="") as file:
+        writer = csv.writer(file)
+        writer.writerows(email_addresses)
