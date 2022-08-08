@@ -57,7 +57,7 @@ def delete_all_addresses_checked(request):
 
 
 def create_csv(request):
-    emails = models.ValidAddress.objects.all()[10000:20000]
+    emails = models.ValidAddress.objects.all()[25000:30000]
     email_addresses = []
 
     for i in emails:

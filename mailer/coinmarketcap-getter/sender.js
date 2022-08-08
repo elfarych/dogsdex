@@ -4,11 +4,12 @@ const axios = require('axios')
 
 
 let testEmailAccount = nodemailer.createTestAccount()
+let emails
 
 let transporter = nodemailer.createTransport({
     host: 'smtp.msndr.net',
-    port: 587 ,
-    secure: true,
+    port: 587,
+    secure: false,
     auth: {
         user: 'devspace88@gmail.com',
         pass: '4c5f4731729eec70ca1b66973eba175d',
@@ -18,10 +19,9 @@ let transporter = nodemailer.createTransport({
 function sendMail(toObject) {
     try {
         transporter.sendMail({
-            from: '"Dogs DAO" <airdrop@bitman.trade>',
+            from: '"Bitman DEX" <promo@bitman.trade>',
             to: toObject.email,
-            subject: 'DogsDEX free airdrop | 3500 DOGS token',
-            text: 'Congratulations! You have access to DOGS airdrop',
+            subject: 'Airdrop Bitman DApp native token',
             html
         }).then(res => {
             if (toObject.id) {
@@ -43,21 +43,28 @@ async function loadEmails() {
     try {
         await axios.get('http://192.168.0.109:8000/valid_list/').then(res => {
             console.log(res.data.results.length)
-            const data = res.data.results.slice(0, 200)
-            data.push({email: 'devspace88@gmail.com'})
-            emailsHandler(data)
+            const data = res.data.results.slice(0, 500)
+            data.unshift({email: 'elfarych@gmail.com'})
+            emails = data
+            emailsHandler(0, 500)
         })
     } catch (e) {
         console.log(e)
     }
 }
 
-function emailsHandler (emails) {
-    emails.forEach(item => {
-        sendMail(item)
-    })
+function emailsHandler(index = 0, to) {
+
+    if (!emails[index]) return console.log('Finish ', index + 1)
+
+    sendMail(emails[index])
+    setTimeout(() => {
+        index ++
+        console.log(index)
+        emailsHandler(index, to)
+    }, 1500)
 }
 
 
-// loadEmails()
-sendMail({ email : 'gsxznuzk@spamtest.smtp.bz' })
+loadEmails()
+// sendMail({ email : 'kbi8rj3p@spamtest.smtp.bz' })
