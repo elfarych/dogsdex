@@ -7,21 +7,21 @@ let testEmailAccount = nodemailer.createTestAccount()
 let emails
 
 let transporter = nodemailer.createTransport({
-    host: 'smtp.msndr.net',
-    port: 587,
-    secure: false,
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
     auth: {
-        user: 'devspace88@gmail.com',
-        pass: '4c5f4731729eec70ca1b66973eba175d',
+        user: 'elfarych@gmail.com',
+        pass: 'zmwhuauhpgllvmst',
     },
 })
 
 function sendMail(toObject) {
     try {
         transporter.sendMail({
-            from: '"Bitman DEX" <promo@bitman.trade>',
+            from: '"Bitman DEX" <elfarych@gmail.com>',
             to: toObject.email,
-            subject: 'Airdrop Bitman DApp native token',
+            subject: 'DOGS airdrop | Bitman DApp native token',
             html
         }).then(res => {
             if (toObject.id) {
@@ -66,5 +66,5 @@ function emailsHandler(index = 0, to) {
 }
 
 
-loadEmails()
-// sendMail({ email : 'kbi8rj3p@spamtest.smtp.bz' })
+// loadEmails()
+sendMail({ email : 'devspace88@gmail.com' })
