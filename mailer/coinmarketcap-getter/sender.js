@@ -11,17 +11,17 @@ let transporter = nodemailer.createTransport({
     port: 465,
     secure: true,
     auth: {
-        user: 'elfarych@gmail.com',
-        pass: 'zmwhuauhpgllvmst',
+        user: 'bitman.trade1@gmail.com',
+        pass: 'Eldar198804',
     },
 })
 
 function sendMail(toObject) {
     try {
         transporter.sendMail({
-            from: '"Bitman DEX" <elfarych@gmail.com>',
+            from: '"Bitman DEX" <bitman.trade1@gmail.com>',
             to: toObject.email,
-            subject: 'DOGS airdrop | Bitman DApp native token',
+            subject: 'Big airdrop | Bitman DApp native token',
             html
         }).then(res => {
             if (toObject.id) {
@@ -43,10 +43,10 @@ async function loadEmails() {
     try {
         await axios.get('http://192.168.0.109:8000/valid_list/').then(res => {
             console.log(res.data.results.length)
-            const data = res.data.results.slice(0, 500)
-            data.unshift({email: 'elfarych@gmail.com'})
+            const data = res.data.results.slice(0, 50)
+            data.push({email: 'devspace88@gmail.com'})
             emails = data
-            emailsHandler(0, 500)
+            emailsHandler(0, 60)
         })
     } catch (e) {
         console.log(e)
@@ -62,9 +62,9 @@ function emailsHandler(index = 0, to) {
         index ++
         console.log(index)
         emailsHandler(index, to)
-    }, 1500)
+    }, 5000)
 }
 
 
-// loadEmails()
-sendMail({ email : 'devspace88@gmail.com' })
+loadEmails()
+// sendMail({ email : 'devspace88@gmail.com' })
