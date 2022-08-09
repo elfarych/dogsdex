@@ -1,7 +1,6 @@
-const html = require('./mail-text-html')
 const nodemailer = require("nodemailer");
 const axios = require('axios')
-
+const html = require('./mail-text-html')
 
 let testEmailAccount = nodemailer.createTestAccount()
 let emails
@@ -11,17 +10,17 @@ let transporter = nodemailer.createTransport({
     port: 465,
     secure: true,
     auth: {
-        user: 'bitman.trade1@gmail.com',
-        pass: 'Eldar198804',
+        user: 'bitman.trade2@gmail.com',
+        pass: 'doubdulyjlotgqtw',
     },
 })
 
 function sendMail(toObject) {
     try {
         transporter.sendMail({
-            from: '"Bitman DEX" <bitman.trade1@gmail.com>',
+            from: '"Bitman DEX" <bitman.trade2@gmail.com>',
             to: toObject.email,
-            subject: 'Big airdrop | Bitman DApp native token',
+            subject: `Airdrop for "${toObject.email.replace('@gmail.com', '')}" from Coinmarketcap partner Bitman DApp`,
             html
         }).then(res => {
             if (toObject.id) {
@@ -43,17 +42,17 @@ async function loadEmails() {
     try {
         await axios.get('http://192.168.0.109:8000/valid_list/').then(res => {
             console.log(res.data.results.length)
-            const data = res.data.results.slice(0, 50)
-            data.push({email: 'devspace88@gmail.com'})
+            emails = res.data.results.slice(0, 250)
+            data.push({email: 'elfarych@gmail.com'})
             emails = data
-            emailsHandler(0, 60)
+            emailsHandler(0)
         })
     } catch (e) {
         console.log(e)
     }
 }
 
-function emailsHandler(index = 0, to) {
+function emailsHandler(index = 0) {
 
     if (!emails[index]) return console.log('Finish ', index + 1)
 
@@ -61,10 +60,10 @@ function emailsHandler(index = 0, to) {
     setTimeout(() => {
         index ++
         console.log(index)
-        emailsHandler(index, to)
+        emailsHandler(index)
     }, 5000)
 }
 
 
 loadEmails()
-// sendMail({ email : 'devspace88@gmail.com' })
+// sendMail({ email : 'elfarych@gmail.com' })
