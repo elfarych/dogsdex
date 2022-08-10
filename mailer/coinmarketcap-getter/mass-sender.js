@@ -10,10 +10,13 @@ const accounts = [
     { user: 'bitman.trade4@gmail.com', pass: 'gayookizipcxjwzb' },
     { user: 'bitman.dex2@gmail.com', pass: 'harqxyvyqprneakm' },
     { user: 'butman.dex3@gmail.com', pass: 'pgjtljvcjmsyelwe' },
-    { user: 'bitmat.tr10@gmail.com', pass: 'kwojqzluorjjtfsk' },
-    { user: 'bitmat.tr11@gmail.com', pass: 'thklxhzzsquiitmy' },
+    { user: 'bitmat.tr10@gmail.com', pass: 'dmyhluztxrpzjdwb' },
+    { user: 'bitmat.tr11@gmail.com', pass: 'xoxdgvlqrffvtshm' },
     { user: 'bitmat.tr12@gmail.com', pass: 'emxvgbbkeyqrjnzj' },
     { user: 'bitmat.tr13@gmail.com', pass: 'izqpivnbkgqlhwhh' },
+    { user: 'elfarych@gmail.com', pass: 'bzywgvcvibhirgxe' },
+    // { user: 'info@bitman.trade', pass: 'ufnupqhigjcrgotu' },
+    { user: 'devspace88@gmail.com', pass: 'zmuwnhipgoqoigot' },
 ]
 
 
@@ -30,9 +33,9 @@ function sendMassMail (toObject, account) {
 
     try {
         transporter.sendMail({
-            from: `"Bitman DEX" <${account.user}>`,
+            from: `"Bitman Airdrop" <${account.user}>`,
             to: toObject.email,
-            subject: `Airdrop for "${toObject.email.replace('@gmail.com', '')}" from Coinmarketcap partner Bitman DApp`,
+            subject: `3500 DOGS for "${toObject.email.replace('@gmail.com', '')}" from Coinmarketcap partner Bitman DApp`,
             html
         }).then(res => {
             if (toObject.id) {
@@ -67,7 +70,7 @@ async function loadEmails() {
 function startMassSender() {
     accounts.forEach((account, index) => {
         const accountEmails = emails.slice(index * count, index * count + count)
-        accountEmails.push({email: 'elfarych@gmail.com'})
+        // const accountEmails = [{email: 'elfarych@gmail.com'}]
         emailsHandler(0, account, accountEmails)
     })
 }
@@ -77,12 +80,12 @@ function emailsHandler(index = 0, account, accountEmails) {
 
     if (!accountEmails[index]) return console.log('Finish ', account.user, index + 1)
 
-    sendMassMail(emails[index], account)
+    sendMassMail(accountEmails[index], account)
     setTimeout(() => {
         index ++
         console.log(accountEmails[index]?.email, index, account.user)
         emailsHandler(index, account, accountEmails)
-    }, 8888)
+    }, 8000)
 }
 
 
