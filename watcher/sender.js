@@ -14,8 +14,8 @@ function sendMessage(coin, balance, address) {
         reply_markup: {
             inline_keyboard: [
                 [{
-                    text: `BSCScan`,
-                    url: `https://bscscan.com/address/${address}`
+                    text: coin.startsWith('B') ? 'BSCScan' : 'Etherscan',
+                    url: coin.startsWith('B') ? `https://bscscan.com/address/${address}` : `https://etherscan.io/address/${address}`
                 }]
             ]
         }
